@@ -1,4 +1,4 @@
-require_relative 'celluloid-chain.rb'
+require_relative 'celluloid-chain'
 
 class A
   include Celluloid
