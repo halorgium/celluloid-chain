@@ -4,9 +4,9 @@ class A
   include Celluloid
 
   def test(x)
-    puts "test start #{x}"
+    puts "#{Time.now} #{x} start"
     sleep 1
-    puts "test end #{x} - #{Time.now}"
+    puts "#{Time.now} #{x} end"
   end
 end
 
@@ -16,8 +16,14 @@ q = Celluloid::Chain.new(a)
 
 3.times do |i|
   4.times do |n|
-    q.add(:test, "#{i}-#{n}")
+    x = "#{i}-#{n}"
+    puts "#{Time.now} #{x} adding"
+    q.add(:test, x)
   end
-  sleep 3
+  sleep 2
 end
 
+# Would prefer to be notified when all items are completed
+# q.wait
+
+sleep
